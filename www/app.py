@@ -1,3 +1,9 @@
+'''
+@project: elublog
+@author: Gen Ye
+@datetime: 2018/9/27
+Web 骨架
+'''
 import logging; logging.basicConfig(level=logging.INFO)
 
 import asyncio, os, json, time
