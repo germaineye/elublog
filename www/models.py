@@ -4,7 +4,7 @@
 
 import time, uuid
 #orm加上一点表示当前目录，不加有可能回报错
-from .orm import Model, StringField, BooleanField, FloatField, TextField
+from orm import Model, StringField, BooleanField, FloatField, TextField
 
 '''
 Models for user, blog, comment.
