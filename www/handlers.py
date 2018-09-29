@@ -74,17 +74,19 @@ def cookie2user(cookie_str):
         logging.exception(e)
         return None
 
-
+#首页：GET /
 @get('/')
-def index(request):
-    summary = '我的第一条博客。 Blog的创建日期显示的是一个浮点数，因为它是由这段模板渲染出来的：.'
-    blogs = [
-        Blog(id='1', name='Test Blog', summary=summary, created_at=time.time()-120),
-        Blog(id='2', name='Something New', summary=summary, created_at=time.time()-3600),
-        Blog(id='3', name='Learn Swift', summary=summary, created_at=time.time()-7200)
-    ]
+async def index(*, page='1'):
+    page_index = get_page_index(page)
+    num = await Blog.findNumber('count(id)')
+    page = Page(num)
+    if num == 0:
+        blogs = []
+    else:
+        blogs = await Blog.findAll(orderBy='created_at desc', limit=(page.offset, page.limit))
     return {
         '__template__': 'blogs.html',
+        'page': page,
         'blogs': blogs
     }
 
@@ -137,12 +139,13 @@ async def api_register_user(*, email, name, passwd):
     r.content_type = 'application/json'
     r.body = json.dumps(user, ensure_ascii=False).encode('utf-8')
     return r
-
+#登录页：GET /signin
 @get('/signin')
 def signin():
     return {
         '__template__': 'signin.html'
     }
+#注销页：GET /signout
 @get('/signout')
 def signout(request):
     referer = request.headers.get('Referer')
@@ -190,7 +193,7 @@ async def api_create_blog(request,*,name,summary,content):
                 name=name.strip(), summary=summary.strip(), content=content.strip())
     await blog.save()
     return blog
-
+#日志详情页 GET /blog/:blog_id
 @get('/blog/{id}')
 async def get_blog(id):
     blog = await Blog.find(id)
