@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Elublog 功能列表</title>
+</head>
+<body>
+<p>后端API包括：</p>
+
+<li><input type="checkbox" checked="true">获取日志：GET /api/blogs</li>
+
+<li><input type="checkbox" checked="true">创建日志：POST /api/blogs</li>
+
+<li><input type="checkbox" checked="true">修改日志：POST /api/blogs/:blog_id</li>
+
+<li><input type="checkbox" checked="true">删除日志：POST /api/blogs/:blog_id/delete</li>
+
+<li><input type="checkbox" checked="true">获取评论：GET /api/comments</li>
+
+<li><input type="checkbox" checked="true">创建评论：POST /api/blogs/:blog_id/comments</li>
+
+<li><input type="checkbox" checked="true">删除评论：POST /api/comments/:comment_id/delete</li>
+<li><input type="checkbox" checked="true">登录：POST /api/authenticate</li>
+<li><input type="checkbox" checked="true">创建新用户：POST /api/users</li>
+
+<li><input type="checkbox" checked="true">获取用户：GET /api/users</li>
+
+<p>管理页面包括：</p>
+
+<li><input type="checkbox" checked="true">评论列表页：GET /manage/comments</li>
+
+<li><input type="checkbox" checked="true">管理日志列表页：GET /manage/blogs</li>
+
+<li><input type="checkbox" checked="true">创建日志页：GET /manage/blogs/create</li>
+<li><input type="checkbox" checked="true">修改日志页：GET /manage/blogs/id/edit/</li>
+<li><input type="checkbox" checked="true">用户列表页：GET /manage/users</li>
+
+<p>用户浏览页面包括：</p>
+
+<li><input type="checkbox" checked="true">注册页：GET /register</li>
+
+<li><input type="checkbox" checked="true">登录页：GET /signin</li>
+
+<li><input type="checkbox" checked="true">注销页：GET /signout</li>
+
+<li><input type="checkbox" checked="true">首页：GET /</li>
+
+<li><input type="checkbox" checked="true">日志详情页：GET /blog/:blog_id</li>
+
+把所有的功能实现，我们第一个Web App就宣告完成！
+</body>
+</html>
